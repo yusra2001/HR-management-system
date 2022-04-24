@@ -1,16 +1,6 @@
 'use strict';
 
 
-// const employee = {
-
-//    employeeID: '' 
-//     fullName: 'testFirstName',
-//     department: 'testLastName'
-//     level:
-//     imageURL:
-//     salary:
-//   };
-////////////////
 let allEmp = [];
 ////// constructor function /////
 function Emp(employeeID,firstName,lastName,department,level,imageURL) {
@@ -59,27 +49,51 @@ let rndInt=0;
   } console.log(rndInt)
 return rndInt;
   }
+
+  Emp.prototype.render=function(){
+
+   // document.write(`<h2>${this.employeeID}<h2/>`)
+
+   document.write(`<h2> employee full name ${this.firstName} ${this.lastName}<h2/>`)
+   document.write(`<h2> salary ${this.salary}<h2/>`)
+   //document.write(`<h2>employee ID ${this.employeeID}<h2/>`)
+    
+
+  }
+  
   //////////////////////
   let emp1 = new Emp("1000","Ghazi", "Samer","Adminstration", "Senior","/emp1.jpg");
 console.log(emp1);
+emp1.render()
 ////////////
 let emp2 = new Emp("1001","Lana", "Ali","Finance", "Senior","emps/emp2.jpg");
-console.log(emp1);
+console.log(emp2);
+emp2.render()
 let emp3 = new Emp("1002","Tamara", "Ayoub","Marketing", "Senior","emps/emp3.jpg");
-console.log(emp1);
+console.log(emp3);
+emp3.render()
 let emp4 = new Emp("1003","Safi", "Walid","Adminstration", "Mid-Senior","emps/emp4.jpg");
-console.log(emp1);
+console.log(emp4);
+emp4.render()
 let emp5 = new Emp("1004","Omar", "Ziad","Development", "Senior","emps/emp5.jpg");
-console.log(emp1);
+console.log(emp5);
+emp5.render()
 let emp6 = new Emp("1005","Rana", "Saleh","Development", "Junior","emps/emp6.jpg");
-console.log(emp1);
+console.log(emp6);
+emp7.render()
 let emp7 = new Emp("1006","Hadi", "Ahmad","Finance", "Mid-Senior","emps/emp7.jpg");
-console.log(emp1);
+console.log(emp7);
+emp8.render()
 ////////////////////////////////////////////////////////////
 // 
-var tag_id = document.getElementById('tagid');
-var newNode = document.createElement('p');
-newNode.appendChild(document.createTextNode('html string'));
+// var tag_id = document.getElementById('tagid');
+// var newNode = document.createElement('p');
+// newNode.appendChild(document.createTextNode('html string'));
+
+
+////////////////////////////////////////////////////////////////
+
+
 // var tag_id = document.getElementById('tagid');
 // var newNode = document.createElement('p');
 // newNode.appendChild(document.createTextNode('html string'));
@@ -95,10 +109,11 @@ newNode.appendChild(document.createTextNode('html string'));
 
 //document.write(emp1);
 ///document.write(emp1);
-document.write(this.employeeID);
-document.write(this.firstName);
-document.write(this.salary);
-document.write(allEmp);
+// document.write(this.employeeID);
+// document.write(this.firstName);
+// document.write(this.salary);
+//document.write(allEmp);
 
-
+document.write("Hello World!");
 //ReactDOM.render(<p>Hello</p>, document.getElementById('root'));
+/////////////////////////
