@@ -80,10 +80,10 @@ console.log(emp5);
 emp5.render()
 let emp6 = new Emp("1005","Rana", "Saleh","Development", "Junior","emps/emp6.jpg");
 console.log(emp6);
-emp7.render()
+emp6.render()
 let emp7 = new Emp("1006","Hadi", "Ahmad","Finance", "Mid-Senior","emps/emp7.jpg");
 console.log(emp7);
-emp8.render()
+emp7.render()
 ////////////////////////////////////////////////////////////
 // 
 // var tag_id = document.getElementById('tagid');
