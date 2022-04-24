@@ -49,17 +49,29 @@ let rndInt=0;
   } console.log(rndInt)
 return rndInt;
   }
+///////////////////////
+function randomval(){
+ return Math.floor(1000 + Math.random() * 9000);
+}
 
+
+/////////////////////
   Emp.prototype.render=function(){
+    ///////////////
+    document.write(`<h2> employee full name ${this.firstName} ${this.lastName}<h2/>`)
+   document.write(`<h2> salary ${this.salary}<h2/>`)}
+   //////////////////////
+// let header = document.createElement("h4");
+// header.textContent = this.firstName;
+// empsDiv.appendChild(header);
 
    // document.write(`<h2>${this.employeeID}<h2/>`)
 
-   document.write(`<h2> employee full name ${this.firstName} ${this.lastName}<h2/>`)
-   document.write(`<h2> salary ${this.salary}<h2/>`)
+   
    //document.write(`<h2>employee ID ${this.employeeID}<h2/>`)
     
 
-  }
+  
   
   //////////////////////
   let emp1 = new Emp("1000","Ghazi", "Samer","Adminstration", "Senior","/emp1.jpg");
@@ -80,10 +92,10 @@ console.log(emp5);
 emp5.render()
 let emp6 = new Emp("1005","Rana", "Saleh","Development", "Junior","emps/emp6.jpg");
 console.log(emp6);
-emp7.render()
+emp6.render()
 let emp7 = new Emp("1006","Hadi", "Ahmad","Finance", "Mid-Senior","emps/emp7.jpg");
 console.log(emp7);
-emp8.render()
+emp7.render()
 ////////////////////////////////////////////////////////////
 // 
 // var tag_id = document.getElementById('tagid');
@@ -114,6 +126,15 @@ emp8.render()
 // document.write(this.salary);
 //document.write(allEmp);
 
-document.write("Hello World!");
+//document.write("Hello World!");
 //ReactDOM.render(<p>Hello</p>, document.getElementById('root'));
 /////////////////////////
+// let name = event.target.fullName.value;
+// let department = event.target.department.value;
+// //let level = event.target.level.value;
+// //let image = event.target.image.value;
+// let newEmployee = new Emp(id , name , department , level , image)
+
+const controller = new AbortController();
+const el = document.getElementById("outside");
+el.addEventListener("click", modifyText, { signal: controller.signal } );

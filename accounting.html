@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <!-- <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    ///////////// -->
+    <meta charset="utf-8">
+    <title>Sammy’s First Website</title>
+    <link rel="shortcut icon" type="image/jpg" href=”Favicon_Image_Location”/>
+  
 </head>
 <body>
 
-    <header>
+  <style>
+    .bodyDesign {
+        margin: auto;
+        border: solid 2px #e23376;
+        font-size: 15px;
+        font-family: Verdana;
+        background-color: #dffe91;
+    }
+    </style>
+    <header  style="background-color:rgb(136, 245, 185);">
         
         <a class="navbar-brand" href="/">
             
@@ -20,7 +34,104 @@
     </nav>
 </header>
 
+<style>
+  body {background-color: rgb(197, 241, 247);}
+  h1   {color: blue;}
+  p    {color: rgb(0, 89, 255);}
+  </style>
+  </head>
+</head>
+<body>
 
+
+
+  <!-- <h1 style="color:blue;">A Blue Heading</h1>
+
+  <p style="color:red;">A red paragraph.</p>
+   -->
+  <br></br>
+
+  <h1 style="color:blue;">fill the following fields</h1>
+  <div class="wrapper">
+    <div id="survey_options">
+      <label for="full name">full name:</label><br>
+      <input type="text" name="survey_options[]" class="survey_options" size="50" placeholder="full name">
+      <br></br>
+      <label for="image url">image url:</label><br>
+      
+      <input type="text" name="survey_options[]" class="survey_options" size="50" placeholder="image url">
+      <br></br>
+
+    <label for="department">Choose a department:</label>
+<select id="cars" name="cars">
+  <option value="Administration">Administration</option>
+  <option value="Marketing">Marketing</option>
+  <option value="Development">Development</option>
+  <option value="Finance">Finance</option>
+</select>
+<br></br>
+<br></br>
+
+    <label for="Level">Choose a Level:</label>
+
+<select id="cars" name="cars">
+  <option value="Junior">Junior</option>
+  <option value="Mid-Senior">Mid-Senior</option>
+  <option value="Senior">Senior</option>
+</select>
+  <br></br>
+
+  <input type="submit" value="Submit">
+  
+</select>
+    
+    
+    </div>
+    <div class="controls">
+      <a href="#" id="add_more_fields"><i class="fa fa-plus"></i>Add More</a>
+      <a href="#" id="remove_fields"><i class="fa fa-plus"></i>Remove Field</a>
+    </div>
+
+    /////////
+    <button id="clickIt">Click here</button>
+  
+    <p id="hoverPara">Hover over this Text !</p>
+  
+  
+    <b id="effect"></b>
+  
+    <script>
+        const x = document.getElementById("clickIt");
+        const y = document.getElementById("hoverPara");
+  
+        x.addEventListener("click", RespondClick);
+        y.addEventListener("mouseover", RespondMouseOver);
+        y.addEventListener("mouseout", RespondMouseOut);
+  
+        function RespondMouseOver() {
+            document.getElementById("effect").innerHTML +=
+                       "MouseOver Event" + "<br>";
+        }
+  
+        function RespondMouseOut() {
+            document.getElementById("effect").innerHTML +=
+                      "MouseOut Event" + "<br>";
+        }
+  
+        function RespondClick() {
+            document.getElementById("effect").innerHTML +=
+                      "Click Event" + "<br>";
+        }
+        //////////
+        <table id="outside">
+  <tr><td id="t1">one</td></tr>
+  <tr><td id="t2">two</td></tr>
+</table>
+    </script>
+    ///////////////////////
+  </div>
+<script src="script.js"></script>
+</body>
 
 
 
@@ -38,8 +149,8 @@
           left: 0;
           bottom: 0;
           width: 100%;
-          background-color: rgb(36, 133, 133);
-          color: white;
+          background-color: rgb(245, 147, 204);
+          color: rgb(241, 236, 236);
           text-align: center;
         }
         </style>
@@ -51,6 +162,5 @@
         </div>
 
 </footer>
- <!-- <script src="app.js"></script>  -->
-</body>
+ <script src="app.js"></script> 
 </html>
