@@ -126,3 +126,4 @@ if (parseStrArrayOfEmployee != null) {
     tdAvarage.innerHTML = totalAvg ;
     tr.appendChild(tdAvarage);
 }
+////////
