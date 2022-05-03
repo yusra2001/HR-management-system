@@ -71,7 +71,7 @@ function randomval(){
    //document.write(`<h2>employee ID ${this.employeeID}<h2/>`)
     
 
-  
+  ////
   
   //////////////////////
   let emp1 = new Emp("1000","Ghazi", "Samer","Adminstration", "Senior","/emp1.jpg");
