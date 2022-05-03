@@ -138,7 +138,6 @@ emp7.render()
 const controller = new AbortController();
 const el = document.getElementById("outside");
 el.addEventListener("click", modifyText, { signal: controller.signal } );
-///////////////////////////////////////
 function randomId (){
   var randomId= Math.ceil(Math.random()*10000)
   return randomId;
@@ -238,5 +237,42 @@ function randomId() {
 ///////
 
 
+////////////////////////////
+//////////////////////////////
+var form=document.getElementById("my Form");
+form.addEventListener('submit',onSubmit);
+function onSubmit(event){
+  event.preventDefault();
+var userName=document.getElementById("user_name").value;
+var selectDepartment=document.getElementById("select_dep");
+var strSelectDepartment = selectDepartment.options[selectDepartment.selectedIndex].text;
+var selectOption=document.getElementById("select_opt");
+var strSelectOption= selectOption.options[selectOption.selectedIndex].text;
+var selectImage=document.getElementById("img_url").value;
+/////////////////////////////////////////////////
 
+
+
+var cardContainer=document.getElementById("card_container");
+var card=document.createElement('div');
+card.classList.add("card");
+cardContainer.appendChild(card);
+var image=document.createElement('img');
+image.src=selectImage;
+var username=document.createElement('p');
+username.innerHTML=`Usermame: ${userName}`;
+var department=document.createElement('p');
+department.innerHTML=`Department: ${strSelectDepartment}`;
+var Level=document.createElement("p");
+Level.innerHTML=`Level: ${strSelectOption}`;
+var idNumber=document.createElement('p');
+idNumber.innerHTML=`ID: ${randomId()}`;
+
+card.appendChild(image);
+card.appendChild(username);
+card.appendChild(department);
+card.appendChild(level);
+card.appendChild(idNumber);
+
+}
 
