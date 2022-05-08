@@ -1,278 +1,170 @@
+
 'use strict';
+let employyeeArr = [];
+let idArr = [];
+let employeeForm = document.getElementById('Employee');
 
 
-let allEmp = [];
-////// constructor function /////
-function Emp(employeeID,firstName,lastName,department,level,imageURL) {
-    this.employeeID = employeeID;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.department = department;
-    this.level = level;
-    this.imageURL= imageURL;
-     this.salary= this.getsal();
-     this.gettaxx= this.gettax();
-     this.getnetsala= this.getnetsal();
 
-    allEmp.push(this);
-}
-//////////////
-Emp.prototype.gettax=function()
-{
-    var tax 
-    for (var i = 0; i < 7; i++) {
-    tax =this.salary*0.075;
-        }    return tax;
-   }
-// //   //////////
-Emp.prototype.getnetsal=function()
-{    var netsalary 
-   for (var i = 0; i < 7; i++) {
-     netsalary =this.salary-this.gettaxx;
-    }return netsalary;
-
-}
-///////////////////////////////////////
-function randomIntFromInterval(min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }
-  Emp.prototype.getsal=function(){
-let rndInt=0;
-  
-  if (this.level=="Senior"){
-  rndInt = randomIntFromInterval(1500, 2000)}
-  else if (this.level=="Mid-Senior"){
-    rndInt = randomIntFromInterval(1000, 1500)
-  }
-  else if (this.level=="Junior"){
-     rndInt = randomIntFromInterval(500, 1000)
-  } console.log(rndInt)
-return rndInt;
-  }
-///////////////////////
-function randomval(){
- return Math.floor(1000 + Math.random() * 9000);
-}
+employeeForm.addEventListener('submit', handelSubit);
 
 
-/////////////////////
-  Emp.prototype.render=function(){
-    ///////////////
-    document.write(`<h2> employee full name ${this.firstName} ${this.lastName}<h2/>`)
-   document.write(`<h2> salary ${this.salary}<h2/>`)}
-   //////////////////////
-// let header = document.createElement("h4");
-// header.textContent = this.firstName;
-// empsDiv.appendChild(header);
-
-   // document.write(`<h2>${this.employeeID}<h2/>`)
-
-   
-   //document.write(`<h2>employee ID ${this.employeeID}<h2/>`)
-    
-
-  ////
-  
-  //////////////////////
-  let emp1 = new Emp("1000","Ghazi", "Samer","Adminstration", "Senior","/emp1.jpg");
-console.log(emp1);
-emp1.render()
-////////////
-let emp2 = new Emp("1001","Lana", "Ali","Finance", "Senior","emps/emp2.jpg");
-console.log(emp2);
-emp2.render()
-let emp3 = new Emp("1002","Tamara", "Ayoub","Marketing", "Senior","emps/emp3.jpg");
-console.log(emp3);
-emp3.render()
-let emp4 = new Emp("1003","Safi", "Walid","Adminstration", "Mid-Senior","emps/emp4.jpg");
-console.log(emp4);
-emp4.render()
-let emp5 = new Emp("1004","Omar", "Ziad","Development", "Senior","emps/emp5.jpg");
-console.log(emp5);
-emp5.render()
-let emp6 = new Emp("1005","Rana", "Saleh","Development", "Junior","emps/emp6.jpg");
-console.log(emp6);
-emp6.render()
-let emp7 = new Emp("1006","Hadi", "Ahmad","Finance", "Mid-Senior","emps/emp7.jpg");
-console.log(emp7);
-emp7.render()
-////////////////////////////////////////////////////////////
-// 
-// var tag_id = document.getElementById('tagid');
-// var newNode = document.createElement('p');
-// newNode.appendChild(document.createTextNode('html string'));
-
-
-////////////////////////////////////////////////////////////////
-
-
-// var tag_id = document.getElementById('tagid');
-// var newNode = document.createElement('p');
-// newNode.appendChild(document.createTextNode('html string'));
-
-  console.log(emp1);
-   console.log(emp2);
-   console.log(emp3);
-   console.log(emp4);
-   console.log(emp5);
-   console.log(emp6);
-
-//   /////////////////
-
-//document.write(emp1);
-///document.write(emp1);
-// document.write(this.employeeID);
-// document.write(this.firstName);
-// document.write(this.salary);
-//document.write(allEmp);
-
-//document.write("Hello World!");
-//ReactDOM.render(<p>Hello</p>, document.getElementById('root'));
-/////////////////////////
-// let name = event.target.fullName.value;
-// let department = event.target.department.value;
-// //let level = event.target.level.value;
-// //let image = event.target.image.value;
-// let newEmployee = new Emp(id , name , department , level , image)
-
-const controller = new AbortController();
-const el = document.getElementById("outside");
-el.addEventListener("click", modifyText, { signal: controller.signal } );
-function randomId (){
-  var randomId= Math.ceil(Math.random()*10000)
-  return randomId;
-}
-
-console.log("Test random:",randomId());
-
-var arrayOfEmployee = [];
-var savedData = localStorage.getItem("strArrayOfEmployee");
-var parseStrArrayOfEmployee = JSON.parse(savedData);
-
-var cardContainer = document.getElementById("card_container");
-if (parseStrArrayOfEmployee!= null) {
-  
-
-for (let index = 0; index < parseStrArrayOfEmployee.length; index++) {
-
-  var card = document.createElement('div');
-  card.classList.add("card");
-  cardContainer.appendChild(card);
-  var image = document.createElement('img');
-  image.src = parseStrArrayOfEmployee[index].selectImage;
-  var username = document.createElement('p');
-  username.innerHTML = parseStrArrayOfEmployee[index].userName;
-  var department = document.createElement('p');
-  department.innerHTML = parseStrArrayOfEmployee[index].strSelectDepartment;
-  var rank = document.createElement("p");
-  rank.innerHTML = parseStrArrayOfEmployee[index].strSelectOption;
-  var idNumber = document.createElement('p');
-  idNumber.innerHTML = parseStrArrayOfEmployee[index].idNumber;
-
-  card.appendChild(image);
-  card.appendChild(username);
-  card.appendChild(department);
-  card.appendChild(rank);
-  card.appendChild(idNumber);
+function Person(Employee_ID, Full_Name, Department, Level, Image_URL, Salary) {
+    this.Employee_ID = Employee_ID;
+    this.Full_Name = Full_Name;
+    this.Department = Department;
+    this.Level = Level;
+    this.Image_URL = Image_URL;
+    this.Salary = Salary;
+    employyeeArr.push(this);
 
 }
 
+Person.prototype.idFounder = function() {
+    let id = 0;
+    if (idArr.length == 0) {
+        id = 1001;
+    } else {
+        id = idArr[idArr.length - 1];
+        id += 1;
+    }
+    idArr.push(id);
+    this.Employee_ID = id;
 }
 
-var form = document.getElementById("my Form");
+Person.prototype.salaryCalc = function() {
+    let netSalary = 0;
+    let tax = 0;
+    if (this.Level == "Senior") {
+        netSalary = Math.floor(Math.random() * (2000 - 1500 + 1) + 1500);
+    } else if (this.Level == "Mid-Senior") {
+        netSalary = Math.floor(Math.random() * (1500 - 1000 + 1) + 1000);
+    } else if (this.Level == "Junior") {
+        netSalary = Math.floor(Math.random() * (1000 - 500 + 1) + 500);
+    }
 
-form.addEventListener('submit', onSubmit);
-function onSubmit(event) {
-  var objectOfEmployee = {};
-  event.preventDefault();
-  var userName = document.getElementById("user_name").value;
-  objectOfEmployee.userName = userName;
-  var selectDepartment = document.getElementById("select_dep");
-  var strSelectDepartment = selectDepartment.options[selectDepartment.selectedIndex].text;
-  objectOfEmployee.strSelectDepartment = strSelectDepartment;
-  var selectOption = document.getElementById("select_opt");
-  var strSelectOption = selectOption.options[selectOption.selectedIndex].text;
-  objectOfEmployee.strSelectOption = strSelectOption;
-  var selectImage = document.getElementById("img_url").value;
-  objectOfEmployee.selectImage = selectImage
-  var minimumSalary = Number(document.getElementById("minSalary").value);
-  var maximumSalary = Number(document.getElementById("maxSalary").value);
-  objectOfEmployee.salary = salary(minimumSalary, maximumSalary);
-  objectOfEmployee.idNumber = randomId();
-  arrayOfEmployee.push(objectOfEmployee);
-  console.log("arrayOfEmployee:", arrayOfEmployee)
-  var strArrayOfEmployee = JSON.stringify(arrayOfEmployee);
-  localStorage.setItem("strArrayOfEmployee", strArrayOfEmployee);
-  var cardContainer = document.getElementById("card_container");
-  var card = document.createElement('div');
-  card.classList.add("card");
-  cardContainer.appendChild(card);
-  var image = document.createElement('img');
-  image.src = selectImage;
-  var username = document.createElement('p');
-  username.innerHTML = `Usermame: ${userName}`;
-  var department = document.createElement('p');
-  department.innerHTML = `Department: ${strSelectDepartment}`;
-  var rank = document.createElement("p");
-  rank.innerHTML = `Rank: ${strSelectOption}`;
-  var idNumber = document.createElement('p');
-  idNumber.innerHTML = `ID: ${randomId()}`;
-
-  card.appendChild(image);
-  card.appendChild(username);
-  card.appendChild(department);
-  card.appendChild(rank);
-  card.appendChild(idNumber);
+    tax = netSalary * 0.075;
+    netSalary -= tax;
+    this.Salary = netSalary;
 }
 
-function salary(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+function handelSubit(event) {
+    event.preventDefault();
 
-function randomId() {
-  var randomId = Math.ceil(Math.random() * 10000)
-  return randomId;
-}
-///////////////////////////
-///////
+    console.log(event);
+    let Full_Name = event.target.name.value;
+    let Department = event.target.Department.value;
+    let Level = event.target.Level.value;
+    let Image_URL = event.target.image.value;
 
+    let newEmployee = new Person(0, Full_Name, Department, Level, Image_URL, 0);
 
-////////////////////////////
-//////////////////////////////
-var form=document.getElementById("my Form");
-form.addEventListener('submit',onSubmit);
-function onSubmit(event){
-  event.preventDefault();
-var userName=document.getElementById("user_name").value;
-var selectDepartment=document.getElementById("select_dep");
-var strSelectDepartment = selectDepartment.options[selectDepartment.selectedIndex].text;
-var selectOption=document.getElementById("select_opt");
-var strSelectOption= selectOption.options[selectOption.selectedIndex].text;
-var selectImage=document.getElementById("img_url").value;
-/////////////////////////////////////////////////
-
-
-
-var cardContainer=document.getElementById("card_container");
-var card=document.createElement('div');
-card.classList.add("card");
-cardContainer.appendChild(card);
-var image=document.createElement('img');
-image.src=selectImage;
-var username=document.createElement('p');
-username.innerHTML=`Usermame: ${userName}`;
-var department=document.createElement('p');
-department.innerHTML=`Department: ${strSelectDepartment}`;
-var Level=document.createElement("p");
-Level.innerHTML=`Level: ${strSelectOption}`;
-var idNumber=document.createElement('p');
-idNumber.innerHTML=`ID: ${randomId()}`;
-
-card.appendChild(image);
-card.appendChild(username);
-card.appendChild(department);
-card.appendChild(level);
-card.appendChild(idNumber);
+    newEmployee.salaryCalc();
+    newEmployee.idFounder();
+    newEmployee.render();
+    saved(employyeeArr);
 
 }
+
+function saved(data) {
+    let stringObj = JSON.stringify(data);
+    localStorage.setItem("thePersone", stringObj);
+}
+
+function getData() {
+    let strings = localStorage.getItem('thePersone');
+    let arrData = JSON.parse(strings);
+
+    for (let i = employyeeArr.length; i < arrData.length; i++) {
+        var element = new Person(0, arrData[i].Full_Name, arrData[i].Department, arrData[i].Level, arrData[i].Image_URL, 0);
+        element.salaryCalc();
+        element.idFounder();
+        element.render();
+    }
+
+
+
+}
+
+
+
+Person.prototype.render = function() {
+
+    if (this.Department == 'Administration') {
+        document.getElementById('person').innerHTML += (`
+        <div class="employeeNS">
+                    <div class="employeePic">
+                        <img src="${this.Image_URL}" alt="">
+                    </div>
+                    <div class="employeeInfo">
+                        <p class="empTitle">Name: ${this.Full_Name}</p>
+                        <p class="empId">ID: ${this.Employee_ID}</p>
+                        <p class="empDepartment">Department: ${this.Department}</p>
+                        <p class="empLevel">Level: ${this.Level}</p>
+                        <p class="empSalary">Salary: ${this.Salary}</p>
+                    </div>
+                </div>`);
+    } else if (this.Department == 'Development') {
+        document.getElementById('person2').innerHTML += (`
+        <div class="employeeNS">
+                    <div class="employeePic">
+                        <img src="${this.Image_URL}" alt="">
+                    </div>
+                    <div class="employeeInfo">
+                        <p class="empTitle">Name: ${this.Full_Name}</p>
+                        <p class="empId">ID: ${this.Employee_ID}</p>
+                        <p class="empDepartment">Department: ${this.Department}</p>
+                        <p class="empLevel">Level: ${this.Level}</p>
+                        <p class="empSalary">Salary: ${this.Salary}</p>
+                    </div>
+                </div>`);
+    } else if (this.Department == 'Marketing') {
+        document.getElementById('person3').innerHTML += (`
+        <div class="employeeNS">
+                    <div class="employeePic">
+                        <img src="${this.Image_URL}" alt="">
+                    </div>
+                    <div class="employeeInfo">
+                        <p class="empTitle">Name: ${this.Full_Name}</p>
+                        <p class="empId">ID: ${this.Employee_ID}</p>
+                        <p class="empDepartment">Department: ${this.Department}</p>
+                        <p class="empLevel">Level: ${this.Level}</p>
+                        <p class="empSalary">Salary: ${this.Salary}</p>
+                    </div>
+                </div>`);
+    } else if (this.Department == 'Finance') {
+        document.getElementById('person4').innerHTML += (`
+        <div class="employeeNS">
+                    <div class="employeePic">
+                        <img src="${this.Image_URL}" alt="">
+                    </div>
+                    <div class="employeeInfo">
+                        <p class="empTitle">Name: ${this.Full_Name}</p>
+                        <p class="empId">ID: ${this.Employee_ID}</p>
+                        <p class="empDepartment">Department: ${this.Department}</p>
+                        <p class="empLevel">Level: ${this.Level}</p>
+                        <p class="empSalary">Salary: ${this.Salary}</p>
+                    </div>
+                </div>`);
+    }
+
+
+}
+
+let Ghazi = new Person(0, 'Ghazi Samer', 'Administration', 'Senior', './EmpPic/Ghazi.jpg', 0);
+let Lana = new Person(0, 'Lana Ali', 'Finance', 'Senior', './EmpPic/Lana.jpg', 0);
+let Tamara = new Person(0, 'Tamara Ayoub', 'Marketing', 'Senior', './EmpPic/Tamara.jpg', 0);
+let Safi = new Person(0, 'Safi Walid', 'Administration', 'Mid-Senior', './EmpPic/Safi.jpg', 0);
+let Omar = new Person(0, 'Omar Zaid', 'Development', 'Senior', './EmpPic/Omar.jpg', 0);
+let Rana = new Person(0, 'Rana Saleh', 'Development', 'Junior', './EmpPic/Rana.jpg', 0);
+let Hadi = new Person(0, 'Hadi Ahmad', 'Finance', 'Mid-Senior', './EmpPic/Hadi.jpg', 0);
+
+
+
+for (let i = 0; i < employyeeArr.length; i++) {
+    employyeeArr[i].salaryCalc();
+    employyeeArr[i].idFounder();
+    employyeeArr[i].render();
+}
+getData();
 
